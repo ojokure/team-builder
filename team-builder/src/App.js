@@ -44,13 +44,14 @@ const App = () => {
   };
   const onFormSubmit = e => {
     e.preventDefault();
-    setTeamMembers([...teamMembers, teamMembers.concat()]);
+    setTeamMembers([...teamMembers, teamMembers.concat(e.target.value)]);
+    setTeamForm(initialTeamForm)
   };
 
   return (
     <div>
       {!teamForm.name && <div>INPUT YOUR DETAILS AND JOIN OUR TEAM</div>}
-
+      <div>
       <Form
         onNameChange={onNameChange}
         onEmailChange={onEmailChange}
@@ -58,6 +59,7 @@ const App = () => {
         onFormSubmit={onFormSubmit}
         teamForm={teamForm}
       />
+      </div>
       {teamMembers.map(el => (
         <h5 key={el.id}>{el.name} is a Member of our Team.</h5>
       ))}

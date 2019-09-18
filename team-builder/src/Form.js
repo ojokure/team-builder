@@ -3,26 +3,31 @@ import uuid from "uuid";
 import App from "./App";
 
 function Form(props) {
-  const { onNameChnage, onEmailChange, onRoleChange } = props;
+  const { onNameChnage, onEmailChange, onRoleChange, onFormSubmit, teamForm} = props;
+
+
+  const isDisabled=()=>{
+      return (! props.teamForm.name || ! props.teamForm.age)
+  }
 
   return (
     <form>
       <div>
         <label htmlFor="name"> Name </label>
-        <input onChange={onNameChnage} id="nameInput" type="text" />
+        <input value={props.teamForm.name} onChange={onNameChnage} id="nameInput" type="text" />
       </div>
       <div>
-        <label htmlFor="emailInput">Email</label>
-        <input onChange={onEmailChange} id="emailInput" type="text" />
+        <label htmlFor="emailInput"> Email </label>
+        <input value={props.teamForm.email} onChange={onEmailChange} id="emailInput" type="text" />
       </div>
       <div>
-        <label htmlFor="roleInput">Role</label>
-        <input onChange={onRoleChange} id="roleInput" type="text" />
+        <label htmlFor="roleInput"> Role </label>
+        <input value={props.teamForm.role} onChange={onRoleChange} id="roleInput" type="text" />
       </div>
       <div>
         <button
-        // onClick={onFormSubmit}
-        // disabled={isDisabled()}
+        onClick={onFormSubmit}
+        disabled={isDisabled()}
         >
           Submit
         </button>
