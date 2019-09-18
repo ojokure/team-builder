@@ -41,7 +41,10 @@ const App = () => {
   };
   const onRoleChange = e => {
     setTeamForm({ ...teamForm, role: e.target.value });
-  };
+  // const onDetailChange = e => {
+  //   setTeamForm({...teamForm, [e.target.id]: e.target.value});
+  // 
+  }
   const onFormSubmit = e => {
     e.preventDefault();
     const newMember = {
@@ -68,13 +71,14 @@ const App = () => {
           onNameChange={onNameChange}
           onEmailChange={onEmailChange}
           onRoleChange={onRoleChange}
+          // onDetailChange={onDetailChange}
           onFormSubmit={onFormSubmit}
           teamForm={teamForm}
         />
       </div>
       {teamMembers.map(el => (
         <h3 key={el.id}>
-          {el.name} is a {el.role} developer, a Member of our Team{" "}
+          {el.name} is a {el.role} developer, a Member of our Team
         </h3>
       ))}
     </div>
