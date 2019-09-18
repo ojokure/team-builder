@@ -1,52 +1,33 @@
-import React, { useState } from 'react';
-import uuid from 'uuid';
-import App from './App'
+import React, { useState } from "react";
+import uuid from "uuid";
+import App from "./App";
 
+function Form(props) {
+  const { onNameChnage, onEmailChange, onRoleChange } = props;
 
-
-function Form (props){
- const {onNameChnage, onEmailChange, onRoleChange, onFormSubmit, teamForm}= props
-
-
-
-
-    return(
-       <form>
-         <label  htmlFor='name'> Name </label>
-         <input 
-         value={name}
-         onChange={onNameChnage}
-         id='nameInput'
-         type='text' 
-         />        
-
-       <label htmlFor='emailInput'>Email</label>
-      <input
-        value={email}
-        onChange={onEmailChange}
-        id='emailInput'
-        type='text'
-      />
-      
-      <label htmlFor='roleInput'>Role</label>
-      <input
-        value={role}
-        onChange={onRoleChange}
-        id='roleInput'
-        type='text'
-      />
-       
-       <button 
+  return (
+    <form>
+      <div>
+        <label htmlFor="name"> Name </label>
+        <input onChange={onNameChnage} id="nameInput" type="text" />
+      </div>
+      <div>
+        <label htmlFor="emailInput">Email</label>
+        <input onChange={onEmailChange} id="emailInput" type="text" />
+      </div>
+      <div>
+        <label htmlFor="roleInput">Role</label>
+        <input onChange={onRoleChange} id="roleInput" type="text" />
+      </div>
+      <div>
+        <button
         // onClick={onFormSubmit}
         // disabled={isDisabled()}
-        >  
-        Submit 
+        >
+          Submit
         </button>
-
-       </form>
-
-
-
-
-    )
+      </div>
+    </form>
+  );
 }
+export default Form;
