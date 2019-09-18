@@ -3,18 +3,18 @@ import uuid from "uuid";
 import App from "./App";
 
 function Form(props) {
-  const { onNameChnage, onEmailChange, onRoleChange, onFormSubmit, teamForm} = props;
+  const { onNameChange, onEmailChange, onRoleChange, onFormSubmit, teamForm} = props;
 
 
   const isDisabled=()=>{
-      return (! props.teamForm.name || ! props.teamForm.age)
+      return (! props.teamForm.name || ! props.teamForm.email || !props.teamForm.role)
   }
 
   return (
     <form>
       <div>
-        <label htmlFor="name"> Name </label>
-        <input value={props.teamForm.name} onChange={onNameChnage} id="nameInput" type="text" />
+        <label htmlFor="nameInput"> Name </label>
+        <input value={props.teamForm.name} onChange={onNameChange} id="nameInput" type="text" />
       </div>
       <div>
         <label htmlFor="emailInput"> Email </label>

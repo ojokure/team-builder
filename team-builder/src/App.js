@@ -44,13 +44,21 @@ const App = () => {
   };
   const onFormSubmit = e => {
     e.preventDefault();
-    setTeamMembers([...teamMembers, teamMembers.concat(e.target.value)]);
+    const newMember = {
+       id:uuid(),
+       name:teamForm.name,
+       email:teamForm.email,
+       role:teamForm.role,
+    };
+    const newTeamMember = teamMembers.concat(newMember);
+    setTeamMembers(newTeamMember)
+
     setTeamForm(initialTeamForm)
   };
 
   return (
     <div>
-      {!teamForm.name && <div>INPUT YOUR DETAILS AND JOIN OUR TEAM</div>}
+      {!teamForm.name && <div><h2>INPUT YOUR DETAILS AND JOIN OUR TEAM</h2></div>}
       <div>
       <Form
         onNameChange={onNameChange}
@@ -61,7 +69,7 @@ const App = () => {
       />
       </div>
       {teamMembers.map(el => (
-        <h5 key={el.id}>{el.name} is a Member of our Team.</h5>
+        <h3 key={el.id}>{el.name} is a {el.role}, a Member of our Team </h3>
       ))}
     </div>
   );
