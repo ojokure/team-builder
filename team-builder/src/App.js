@@ -7,19 +7,19 @@ const initialTeamMembers = [
     id: uuid(),
     name: "Chioma",
     email: "chioma@gmail.com",
-    role: "UX Engineer"
+    role: "Back-End"
   },
   {
     id: uuid(),
     name: "Evans",
     email: "evans@gmail.com",
-    role: "Front-End Developer"
+    role: "Front-End"
   },
   {
     id: uuid(),
     name: "Oladimeji",
     email: "oladimeji@gmail.com",
-    role: "Front-End Developer"
+    role: "Front-End"
   }
 ];
 
@@ -45,31 +45,37 @@ const App = () => {
   const onFormSubmit = e => {
     e.preventDefault();
     const newMember = {
-       id:uuid(),
-       name:teamForm.name,
-       email:teamForm.email,
-       role:teamForm.role,
+      id: uuid(),
+      name: teamForm.name,
+      email: teamForm.email,
+      role: teamForm.role
     };
     const newTeamMember = teamMembers.concat(newMember);
-    setTeamMembers(newTeamMember)
+    setTeamMembers(newTeamMember);
 
-    setTeamForm(initialTeamForm)
+    setTeamForm(initialTeamForm);
   };
 
   return (
     <div>
-      {!teamForm.name && <div><h2>INPUT YOUR DETAILS AND JOIN OUR TEAM</h2></div>}
+      {!teamForm.name && (
+        <div>
+          <h2>INPUT YOUR DETAILS AND JOIN OUR TEAM</h2>
+        </div>
+      )}
       <div>
-      <Form
-        onNameChange={onNameChange}
-        onEmailChange={onEmailChange}
-        onRoleChange={onRoleChange}
-        onFormSubmit={onFormSubmit}
-        teamForm={teamForm}
-      />
+        <Form
+          onNameChange={onNameChange}
+          onEmailChange={onEmailChange}
+          onRoleChange={onRoleChange}
+          onFormSubmit={onFormSubmit}
+          teamForm={teamForm}
+        />
       </div>
       {teamMembers.map(el => (
-        <h3 key={el.id}>{el.name} is a {el.role}, a Member of our Team </h3>
+        <h3 key={el.id}>
+          {el.name} is a {el.role} developer, a Member of our Team{" "}
+        </h3>
       ))}
     </div>
   );
